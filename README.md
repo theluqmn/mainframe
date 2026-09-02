@@ -8,15 +8,21 @@ their own server components.
 - [ ] Monitor resource consumption
 - [ ] Manage your own backend services
 - [ ] Domain management
-- [x] Serve static files
 
 ## Installation
 
+To install Mainframe on your Linux server, simply run the following command and
+follow the instructions given by the installer:
+
+```bash
+curl -sSL [https://github.com/theluqmn/mainframe/raw/refs/heads/main/install.sh]
+(https://github.com/theluqmn/mainframe/raw/refs/heads/main/install.sh) | bash
+```
+
 ## Technicality
 
-Mainframe can be configured via a `config.json` file, which you include when
-starting the server (eg: `mainframe config.json`). If its not specified, it defaults
-to `./config.json`. You can refer to the [json file](https://github.com/theluqmn/mainframe/blob/main/config.json)
-at the repo which includes everything you can configure.
-
 ## Notes
+
+Licensed under the [GNU Affero General Public License v3.0](https://github.com/theluqmn/mainframe/raw/refs/heads/main/LICENSE).
+If you are a contributor and is submitting your contributions, you agree that
+@theluqmn has sole rights to relicense the code.

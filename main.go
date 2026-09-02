@@ -6,30 +6,45 @@ import (
 	"encoding/json"
 	"log"
 	"github.com/labstack/echo/v4"
+
+	"main/utils"
 )
 
-func main() {
-	log.Println("gello world!")
-	
-	// fetch configuration
+func loadConfiguration() map[string]any {
+	var config map[string]any
 	configPath := "./config.json"
-	if len(os.Args) > 1 {
-		configPath = os.Args[1]
-	}
-	log.Println("loading config:", configPath)
-
+	
 	file, err := os.Open(configPath)
 	if err != nil {
 		log.Fatalf("error opening file: %v", err)
 	}
 	defer file.Close()
 
-	var config map[string]any
 	err = json.NewDecoder(file).Decode(&config)
 	if err != nil {
 		log.Fatalf("error decoding config: %v", err)
 	}
 	log.Println("config loaded")
+	return config
+}
+
+func main() {
+	fmt.Print("\033[H\033[2J")
+	log.Println("gello world!")
+	
+	config := loadConfiguration()
+
+	// initialise database
+	data := "./data"
+	if configData, ok := config["data"]; ok {
+		data = fmt.Sprintf("%v", configData)
+	}
+	
+	db, err := utils.NewDB(fmt.Sprintf("%s/database.sqlite", data))
+	if err != nil {
+		log.Fatalf("error initialising database: %v", err)
+	}
+	defer db.Close()
 	
 	// initialise echo server
 	e := echo.New()
