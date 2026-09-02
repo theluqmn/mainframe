@@ -15,9 +15,6 @@ import (
 	"main/utils"
 )
 
-//go:embed static
-var staticFiles embed.FS
-
 //go:embed web
 var webFiles embed.FS
 

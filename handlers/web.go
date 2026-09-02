@@ -14,7 +14,7 @@ func NewWebHandler() *WebHandler {
 }
 
 func (h *WebHandler) RenderDesktop(c echo.Context) error {
-	log.Printf("[%s] GET /screen", c.RealIP())
+	log.Printf("[%s] GET /", c.RealIP())
 	
 	return c.Render(http.StatusOK, "desktop", map[string]any{})
 }

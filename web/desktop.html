@@ -1,10 +1,33 @@
-{{define "window"}}
+{{define "desktop"}}
 <!DOCTYPE html>
 <html lang="en">
-    <head></head>
-    <body class="min-h-screen">
-        <div id="taskbar"></div>
+    <head>
+        {{template "head" .}}
+    </head>
+    <body class="w-full flex flex-col min-h-screen">
+        <div id="menu"
+        class="p-1 flex flex-row justify-between bg-[rgb(200,200,200)] text-[rgb(55,55,55)] text-sm">
+            <div class="flex flex-row gap-8">
+                <p>Mainframe</p>
+            </div>
 
-        <script src="static/window.js"></script>
+            <div class="flex flex-row gap-2">
+                <p>2027/04/16</p>
+                <p>15:32</p>
+            </div>
+        </div>
+
+        <div class="flex flex-row flex-1">
+            <div id="desktop" class="p-2 w-full flex-1 bg-white">
+                <p class="text-white">Test</p>
+            </div>
+
+            <div id="taskbar" class="flex flex-col gap-2 w-50 bg-black">
+                <p>TEST</p>
+            </div>
+        </div>
+        
+        <script src="web/static/desktop.js"></script>
     </body>
 </html>
+{{end}}
