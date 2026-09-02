@@ -1,10 +1,6 @@
-const menuClock = document.getElementById('menu-clock')
-const menuDate = document.getElementById('menu-date')
+desktop = document.getElementById('desktop')
 
-function updateClock() {
-    const now = new Date().toLocaleTimeString('en-GB');
-    menuClock.textContent = now
+function newInstance(id, title, innerHTML) {
+    const window = document.createElement('div')
+    desktop.appendChild(window)
 }
-
-updateClock()
-setInterval(updateClock, 1000);
