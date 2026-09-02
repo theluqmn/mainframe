@@ -4,30 +4,34 @@
     <head>
         {{template "head" .}}
     </head>
-    <body class="w-full flex flex-col min-h-screen">
+    <body class="w-full flex flex-col min-h-screen
+    bg-cover bg-center bg-no-repeat" style="background-image: url('/static/background.jpg');">
         <div id="menu"
-        class="p-1 flex flex-row justify-between bg-[rgb(200,200,200)] text-[rgb(55,55,55)] text-sm">
-            <div class="flex flex-row gap-8">
-                <p>Mainframe</p>
+        class="opacity-70 p-1 flex flex-row justify-between bg-black text-[rgb(155,155,155)] text-sm items-center">
+            <div class="flex flex-row gap-8 items-center">
+                <p class="p-0.5 hover:bg-[rgb(55,55,55)] duration-300 rounded-md">Mainframe</p>
+
+                <div id="app-menu" class="flex flex-row gap-2 text-black"></div>
             </div>
 
-            <div class="flex flex-row gap-2">
-                <p>2027/04/16</p>
-                <p>15:32</p>
+            <div class="flex flex-row gap-2 items-center">
+                <p id="menu-date">2027/04/16</p>
+                <p id="menu-clock">15:32:31</p>
+                <div class="bg-black rounded-md"></div>
             </div>
         </div>
 
-        <div class="flex flex-row flex-1">
-            <div id="desktop" class="p-2 w-full flex-1 bg-white">
+        <div class="flex flex-col flex-1">
+            <div id="desktop" class="p-2 w-full flex-1 bg-transparent">
                 <p class="text-white">Test</p>
             </div>
 
-            <div id="taskbar" class="flex flex-col gap-2 w-50 bg-black">
+            <div id="taskbar" class="opacity-70 flex flex-col gap-2 h-50 bg-black">
                 <p>TEST</p>
             </div>
         </div>
         
-        <script src="web/static/desktop.js"></script>
+        <script src="/static/desktop.js"></script>
     </body>
 </html>
 {{end}}

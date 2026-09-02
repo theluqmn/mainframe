@@ -46,7 +46,7 @@ func registerRoutes(e *echo.Echo) {
 	webHandler := handlers.NewWebHandler()
 
 	e.GET("/", webHandler.RenderDesktop)
-	e.Static("/static", "static")
+	e.Static("/static", "web/static")
 	
 	log.Println("all routes registered")
 } 

@@ -1,4 +1,7 @@
 {
   "port": 8080,
-  "data": "./data"
+  "data": "./data",
+  "desktop": {
+      "background": "web/static/background.jpg"
+  }
 }
