@@ -13,8 +13,8 @@ func NewWebHandler() *WebHandler {
 	return &WebHandler{}
 }
 
-func (h *WebHandler) RenderHome(c echo.Context) error {
-	log.Printf("[%s] GET /", c.RealIP())
-
-	return c.Render(http.StatusOK, "home", map[string]any{})
+func (h *WebHandler) RenderDesktop(c echo.Context) error {
+	log.Printf("[%s] GET /screen", c.RealIP())
+	
+	return c.Render(http.StatusOK, "desktop", map[string]any{})
 }

@@ -15,6 +15,9 @@ import (
 	"main/utils"
 )
 
+//go:embed static
+var staticFiles embed.FS
+
 //go:embed web
 var webFiles embed.FS
 
@@ -45,7 +48,8 @@ func loadConfiguration() map[string]any {
 func registerRoutes(e *echo.Echo) {
 	webHandler := handlers.NewWebHandler()
 
-	e.GET("/", webHandler.RenderHome)
+	e.GET("/", webHandler.RenderDesktop)
+	e.Static("/static", "static")
 	
 	log.Println("all routes registered")
 } 
