@@ -33,7 +33,7 @@ func NewDB(path string) (*sql.DB, error) {
 	}
 
 	// insert initial admin user
-	stmt, err := db.Prepare("INSERT INTO admins (id, password, salt) VALUES (?, ?, ?)")
+	stmt, err := db.Prepare("INSERT OR IGNORE INTO admins (id, password, salt) VALUES (?, ?, ?)")
 	if err != nil {
 		log.Fatalf("error preparing statement: %v", err)
 	}

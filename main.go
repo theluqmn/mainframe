@@ -1,14 +1,28 @@
 package main
 
 import (
-	"fmt"
-	"os"
+	"embed"
 	"encoding/json"
+	"fmt"
 	"log"
+	"os"
+	"io"
+	"html/template"
+
 	"github.com/labstack/echo/v4"
 
+	"main/handlers"
 	"main/utils"
 )
+
+//go:embed web
+var webFiles embed.FS
+
+type Template struct { templates *template.Template }
+
+func (t *Template) Render(w io.Writer, name string, data any, c echo.Context) error {
+	return t.templates.ExecuteTemplate(w, name, data)
+}
 
 func loadConfiguration() map[string]any {
 	var config map[string]any
@@ -28,10 +42,19 @@ func loadConfiguration() map[string]any {
 	return config
 }
 
+func registerRoutes(e *echo.Echo) {
+	webHandler := handlers.NewWebHandler()
+
+	e.GET("/", webHandler.RenderHome)
+	
+	log.Println("all routes registered")
+} 
+
 func main() {
 	fmt.Print("\033[H\033[2J")
 	log.Println("gello world!")
-	
+
+	renderer := &Template{ templates: template.Must(template.ParseFS(os.DirFS("web"), "*.html", "*/*.html")) }
 	config := loadConfiguration()
 
 	// initialise database
@@ -50,6 +73,11 @@ func main() {
 	e := echo.New()
 	e.HideBanner = true
 	e.HidePort = true
+	e.IPExtractor = echo.ExtractIPFromXFFHeader()
+	e.IPExtractor = echo.ExtractIPFromRealIPHeader()
+	e.Renderer = renderer
+
+	registerRoutes(e)
 
 	// start server
 	port := "8080"
