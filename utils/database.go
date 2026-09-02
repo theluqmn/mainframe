@@ -39,7 +39,7 @@ func NewDB(path string) (*sql.DB, error) {
 	}
 	defer stmt.Close()
 	
-	_, err = stmt.Exec("admin", "123456", "im flying intercontinental with you")
+	_, err = stmt.Exec("admin", "123456", "you should know that baby youre the best, yeah more than you know")
 	if err != nil {
 		log.Fatalf("error executing statement: %v", err)
 	}
