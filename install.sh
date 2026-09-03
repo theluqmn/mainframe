@@ -15,17 +15,17 @@ echo ""
 echo "Basic configuration"
 echo ""
 
-read -p "(1/3) Where should /mainframe be located? (./):      " mainframe_folder
+read -p "(1/3) Where should /mainframe be located? (./): " mainframe_folder
 if [ -z "$mainframe_folder" ]; then
     mainframe_folder="./"
 fi
 
-read -p "(2/3) Where to create a data folder? (./):           " data_folder
+read -p "(2/3) Where to create a data folder? (./): " data_folder
 if [ -z "$data_folder" ]; then
     data_folder="./data"
 fi
 
-read -p "(3/3) What port should Mainframe listen on? (8080):  " port
+read -p "(3/3) What port should Mainframe listen on? (8080): " port
 if [ -z "$port" ]; then
     port="8080"
 fi
